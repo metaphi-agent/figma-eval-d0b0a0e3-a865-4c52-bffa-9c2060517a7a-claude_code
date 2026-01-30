@@ -2,18 +2,18 @@
   "figma_file_key": "k2bdT6zWR5MqAErDVWTzR5",
   "total_frames": 13,
   "frames": [
-    {"name": "E-Commerce HomePage", "node_id": "34:213", "gt_image": "34-213.png", "target_route": "/"},
-    {"name": "Category Dropdown", "node_id": "163:2539", "gt_image": "163-2539.png", "target_route": "/"},
-    {"name": "Account Dropdown With account", "node_id": "157:1749", "gt_image": "157-1749.png", "target_route": "/"},
-    {"name": "Sign Up", "node_id": "142:2763", "gt_image": "142-2763.png", "target_route": "/signup"},
-    {"name": "Log In", "node_id": "155:1711", "gt_image": "155-1711.png", "target_route": "/login"},
-    {"name": "Wishlist", "node_id": "164:4451", "gt_image": "164-4451.png", "target_route": "/wishlist"},
-    {"name": "404 Error", "node_id": "175:3732", "gt_image": "175-3732.png", "target_route": "/404"},
-    {"name": "Cart", "node_id": "178:3781", "gt_image": "178-3781.png", "target_route": "/cart"},
-    {"name": "CheckOut", "node_id": "193:4066", "gt_image": "193-4066.png", "target_route": "/checkout"},
-    {"name": "Account", "node_id": "193:4067", "gt_image": "193-4067.png", "target_route": "/account"},
-    {"name": "About", "node_id": "205:4904", "gt_image": "205-4904.png", "target_route": "/about"},
-    {"name": "Contact", "node_id": "208:4308", "gt_image": "208-4308.png", "target_route": "/contact"},
-    {"name": "Product Details page", "node_id": "250:4806", "gt_image": "250-4806.png", "target_route": "/product/:id"}
+    {"name": "E-Commerce HomePage", "node_id": "34:213", "gt_image": "E-Commerce-HomePage.png", "target_route": "/"},
+    {"name": "Sign Up", "node_id": "142:2763", "gt_image": "Sign-Up.png", "target_route": "/signup"},
+    {"name": "Log In", "node_id": "155:1711", "gt_image": "Log-In.png", "target_route": "/login"},
+    {"name": "Cart", "node_id": "178:3781", "gt_image": "Cart.png", "target_route": "/cart"},
+    {"name": "CheckOut", "node_id": "193:4066", "gt_image": "CheckOut.png", "target_route": "/checkout"},
+    {"name": "Wishlist", "node_id": "164:4451", "gt_image": "Wishlist.png", "target_route": "/wishlist"},
+    {"name": "Account", "node_id": "193:4067", "gt_image": "Account.png", "target_route": "/account"},
+    {"name": "About", "node_id": "205:4904", "gt_image": "About.png", "target_route": "/about"},
+    {"name": "Contact", "node_id": "208:4308", "gt_image": "Contact.png", "target_route": "/contact"},
+    {"name": "Product Details page", "node_id": "250:4806", "gt_image": "Product-Details-page.png", "target_route": "/product/:id"},
+    {"name": "404 Error", "node_id": "175:3732", "gt_image": "404-Error.png", "target_route": "*"},
+    {"name": "Category Dropdown", "node_id": "163:2539", "gt_image": "Category-Dropdown.png", "target_route": "/"},
+    {"name": "Account Dropdown With account", "node_id": "157:1749", "gt_image": "Account-Dropdown-With-account.png", "target_route": "/"}
   ]
 }
