@@ -1,32 +1,35 @@
-import { InputHTMLAttributes, forwardRef } from 'react';
+import React from 'react';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  variant?: 'default' | 'underline';
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, className = '', ...props }, ref) => {
-    return (
-      <div className="flex flex-col gap-2 w-full">
-        {label && (
-          <label className="text-base text-black font-normal">
-            {label}
-          </label>
-        )}
-        <input
-          ref={ref}
-          className={`w-full px-4 py-3 bg-[#F5F5F5] border-0 text-black text-base placeholder:text-[#7D8184] focus:outline-none focus:ring-2 focus:ring-[#DB4444] focus:bg-white transition-colors ${error ? 'ring-2 ring-[#DB4444]' : ''} ${className}`}
-          {...props}
-        />
-        {error && (
-          <span className="text-sm text-[#DB4444]">{error}</span>
-        )}
-      </div>
-    );
-  }
-);
+export const Input: React.FC<InputProps> = ({
+  label,
+  error,
+  variant = 'underline',
+  className = '',
+  ...props
+}) => {
+  const baseStyles = variant === 'underline'
+    ? 'w-full py-2 border-b border-gray-300 focus:border-black outline-none bg-transparent text-base'
+    : 'w-full px-4 py-3 border border-gray-300 rounded focus:border-black outline-none bg-secondary text-base';
 
-Input.displayName = 'Input';
-
-export default Input;
+  return (
+    <div className="w-full">
+      {label && (
+        <label className="block text-text-2 text-sm mb-2">
+          {label}
+          {props.required && <span className="text-primary ml-0.5">*</span>}
+        </label>
+      )}
+      <input
+        className={`${baseStyles} ${error ? 'border-primary' : ''} ${className}`}
+        {...props}
+      />
+      {error && <p className="text-primary text-sm mt-1">{error}</p>}
+    </div>
+  );
+};
