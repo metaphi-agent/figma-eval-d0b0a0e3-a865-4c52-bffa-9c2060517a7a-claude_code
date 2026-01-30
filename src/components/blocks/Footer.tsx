@@ -1,105 +1,129 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Footer() {
+export const Footer: React.FC = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      alert(`Subscribed with: ${email}`);
+      setEmail('');
+    }
+  };
+
   return (
     <footer className="bg-black text-white pt-20 pb-6">
-      <div className="max-w-[1170px] mx-auto px-4">
-        <div className="grid grid-cols-5 gap-12 pb-16">
-          {/* Subscribe */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold">Exclusive</h3>
-            <p className="text-xl font-medium">Subscribe</p>
-            <p className="text-base">Get 10% off your first order</p>
-            <div className="relative">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 pb-16">
+          {/* Subscribe Section */}
+          <div>
+            <h3 className="text-2xl font-bold mb-6">Exclusive</h3>
+            <h4 className="text-xl font-medium mb-4">Subscribe</h4>
+            <p className="text-gray-300 mb-4">Get 10% off your first order</p>
+            <form onSubmit={handleSubscribe} className="relative">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full py-3 px-4 pr-12 bg-transparent border-2 border-white text-white placeholder:text-[#7D8184] focus:outline-none rounded"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full py-3 pl-4 pr-12 bg-transparent border border-white rounded text-sm outline-none placeholder-gray-400"
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1">
-                <img src="./assets/icons/send.svg" alt="" className="w-6 h-6 brightness-0 invert" />
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9.91199 12H3.99999L2.02299 4.135C2.01034 4.08948 2.00262 4.04262 1.99999 3.995C1.97799 3.274 2.77199 2.774 3.45999 3.104L22 12L3.45999 20.896C2.77999 21.223 1.99599 20.737 1.99999 20.029C2.00201 19.9657 2.01313 19.9031 2.03299 19.843L3.49999 15" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </button>
-            </div>
+            </form>
           </div>
 
-          {/* Support */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-medium mb-6">Support</h3>
-            <div className="space-y-4 text-base">
+          {/* Support Section */}
+          <div>
+            <h4 className="text-xl font-medium mb-6">Support</h4>
+            <address className="not-italic text-gray-300 space-y-4 text-sm leading-relaxed">
               <p>111 Bijoy sarani, Dhaka,<br />DH 1515, Bangladesh.</p>
               <p>exclusive@gmail.com</p>
               <p>+88015-88888-9999</p>
-            </div>
+            </address>
           </div>
 
-          {/* Account */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-medium mb-6">Account</h3>
-            <nav className="flex flex-col gap-4 text-base">
-              <Link to="/account" className="hover:underline">My Account</Link>
-              <Link to="/login" className="hover:underline">Login / Register</Link>
-              <Link to="/cart" className="hover:underline">Cart</Link>
-              <Link to="/wishlist" className="hover:underline">Wishlist</Link>
-              <Link to="/" className="hover:underline">Shop</Link>
-            </nav>
+          {/* Account Section */}
+          <div>
+            <h4 className="text-xl font-medium mb-6">Account</h4>
+            <ul className="space-y-4 text-sm text-gray-300">
+              <li><Link to="/account" className="hover:text-white transition-colors">My Account</Link></li>
+              <li><Link to="/login" className="hover:text-white transition-colors">Login / Register</Link></li>
+              <li><Link to="/cart" className="hover:text-white transition-colors">Cart</Link></li>
+              <li><Link to="/wishlist" className="hover:text-white transition-colors">Wishlist</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Shop</Link></li>
+            </ul>
           </div>
 
-          {/* Quick Link */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-medium mb-6">Quick Link</h3>
-            <nav className="flex flex-col gap-4 text-base">
-              <a href="#" className="hover:underline">Privacy Policy</a>
-              <a href="#" className="hover:underline">Terms Of Use</a>
-              <a href="#" className="hover:underline">FAQ</a>
-              <Link to="/contact" className="hover:underline">Contact</Link>
-            </nav>
+          {/* Quick Link Section */}
+          <div>
+            <h4 className="text-xl font-medium mb-6">Quick Link</h4>
+            <ul className="space-y-4 text-sm text-gray-300">
+              <li><Link to="/" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors">Terms Of Use</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors">FAQ</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+            </ul>
           </div>
 
-          {/* Download App */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-medium mb-6">Download App</h3>
-            <p className="text-xs text-[#7D8184]">Save $3 with App New User Only</p>
-            <div className="flex gap-2">
-              <div className="w-20 h-20 bg-black border border-white">
-                {/* QR Code placeholder */}
+          {/* Download App Section */}
+          <div>
+            <h4 className="text-xl font-medium mb-6">Download App</h4>
+            <p className="text-xs text-gray-400 mb-2">Save $3 with App New User Only</p>
+            <div className="flex gap-2 mb-6">
+              <div className="w-20 h-20 bg-white rounded flex items-center justify-center">
+                <div className="w-16 h-16 bg-gray-200 grid grid-cols-4 gap-0.5 p-1">
+                  {[...Array(16)].map((_, i) => (
+                    <div key={i} className={`${Math.random() > 0.5 ? 'bg-black' : 'bg-white'}`}></div>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-col gap-1">
-                <a href="#" className="block">
-                  <div className="h-10 bg-white rounded px-2 flex items-center gap-1">
-                    <span className="text-black text-xs">Google Play</span>
-                  </div>
-                </a>
-                <a href="#" className="block">
-                  <div className="h-10 bg-white rounded px-2 flex items-center gap-1">
-                    <span className="text-black text-xs">App Store</span>
-                  </div>
-                </a>
+              <div className="flex flex-col gap-2">
+                <img src="./assets/icons/googleplay.svg" alt="Google Play" className="h-10 w-auto" loading="lazy" />
+                <img src="./assets/icons/appstore.svg" alt="App Store" className="h-10 w-auto" loading="lazy" />
               </div>
             </div>
-            <div className="flex gap-6 pt-4">
-              <a href="#" className="hover:opacity-70">
-                <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-gray-300 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z"/>
+                </svg>
               </a>
-              <a href="#" className="hover:opacity-70">
-                <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+              <a href="#" className="hover:text-gray-300 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M23 3.01006C22.0424 3.68553 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 22.6608 4.40277 23 3.01006Z"/>
+                </svg>
               </a>
-              <a href="#" className="hover:opacity-70">
-                <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+              <a href="#" className="hover:text-gray-300 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
               </a>
-              <a href="#" className="hover:opacity-70">
-                <svg className="w-6 h-6" fill="white" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <a href="#" className="hover:text-gray-300 transition-colors">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z"/>
+                  <path d="M6 9H2V21H6V9Z"/>
+                  <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-[#333] pt-4">
-          <p className="text-center text-[#7D8184] text-base">
-            &copy; Copyright Rimel 2022. All right reserved
+        <div className="border-t border-gray-800 pt-6">
+          <p className="text-center text-gray-500 text-sm">
+            <span className="mr-1">&copy;</span> Copyright Rimel 2022. All right reserved
           </p>
         </div>
       </div>
     </footer>
   );
-}
+};
